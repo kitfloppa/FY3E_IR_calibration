@@ -128,7 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
 # Data
 data/
 
@@ -138,3 +137,6 @@ data/
 # China algs
 fy3el0db/
 bin/
+
+# Config
+*.ini
