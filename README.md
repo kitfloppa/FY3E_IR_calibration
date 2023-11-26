@@ -1,5 +1,8 @@
-<a href="http://data.nsmc.org.cn/PortalSite/Data/Satellite.aspx"><p align="center"><img width=10% src="https://www.nsmc.org.cn/nsmc/pic/en-logo.png"></p></a>
-<a href="https://www.eorc.jaxa.jp/ptree/registration_top.html"><p align="center"><img width=15% src="https://www.jma.go.jp/jma/jma_top/image/logo.gif"></p></a>
+<p align="center">
+  <img width=10% src="https://www.nsmc.org.cn/nsmc/pic/en-logo.png"> 
+  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+  <img width=15% src="https://www.jma.go.jp/jma/jma_top/image/logo.gif">
+</p>
 
 ![Python](https://img.shields.io/badge/python-v3.10+-blue.svg)
 
