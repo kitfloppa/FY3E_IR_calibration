@@ -25,7 +25,12 @@ class DnData:
         
         return DnDataSectors(self.data, sectors_size, sensors_count)
     
-    def imshow(self, figsize: (int, int) = (10, 10), title: str = '') -> None:
+    def imshow(self,
+               figsize: (int, int) = (10, 10), 
+               title: str = '',
+               sections_view: bool | (int, int) = False
+               ) -> None:
+        
         fig, ax = plt.subplots(figsize=figsize)
         
         ax.title.set_text(title)
