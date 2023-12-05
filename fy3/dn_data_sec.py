@@ -57,12 +57,18 @@ class DnDataSectors:
             sectors = []
             
             for j in range(data.shape[1] // self.sectors_size):
-                sectors.append(data[i * self.sensors_count: self.sensors_count + (i * self.sensors_count), 
-                                        j * self.sectors_size: self.sectors_size + (j * self.sectors_size)])
+                sectors.append(Sector(data[i * self.sensors_count: self.sensors_count + (i * self.sensors_count), 
+                                        j * self.sectors_size: self.sectors_size + (j * self.sectors_size)]))
             
             slices_data.append(np.array(sectors))
 
         self.__sectors = np.array(slices_data)
+
+    def __getitem__(self, item: int | (int, int) | slice | (slice, slice)):
+        if isinstance(item, int) or isinstance(item, slice):
+            return self.__sectors[item]
+        else:
+            return self.__sectors[item]
 
     def __getitem__(self, item: int | (int, int) | slice | (slice, slice)):
         if isinstance(item, int) or isinstance(item, slice):
