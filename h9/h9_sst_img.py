@@ -16,6 +16,10 @@ class H9SstImg:
     '''
 
     def __init__(self, file_path: str) -> None:
+        '''
+        TODO:
+        '''
+
         data = h5py.File(file_path, 'r')
         self.__metadata = {key: value.decode('utf-8') \
                            if isinstance(value, bytes) \

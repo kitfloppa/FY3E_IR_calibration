@@ -9,9 +9,17 @@ class SstData:
     '''
 
     def __init__(self, data: np.array) -> None:
+        '''
+        TODO: 
+        '''
+
         self.__data = data
 
     def imshow(self, figsize: (int, int) = (10, 10), title: str = '') -> None:
+        '''
+        TODO: 
+        '''
+
         fig, ax = plt.subplots(figsize=figsize)
         
         ax.title.set_text(title)

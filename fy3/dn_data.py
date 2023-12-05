@@ -17,15 +17,26 @@ class DnData:
     '''
 
     def __init__(self, data: np.array, trim_to: int = TRIM) -> None:
+        '''
+        TODO: 
+        '''
+
         self.__data = data[:, :trim_to]
 
     def get_sections(self, 
                  sectors_size: int = SECTOR_SIZE,
                  sensors_count: int = SENSOR_COUNT) -> DnDataSectors:
+        '''
+        TODO: 
+        '''
         
         return DnDataSectors(self.data, sectors_size, sensors_count)
     
     def imshow(self, figsize: (int, int) = (10, 10), title: str = '') -> None:
+        '''
+        TODO: 
+        '''
+
         fig, ax = plt.subplots(figsize=figsize)
         
         ax.title.set_text(title)
