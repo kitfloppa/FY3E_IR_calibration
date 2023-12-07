@@ -57,8 +57,8 @@ class DnDataSectors:
             sectors = []
             
             for j in range(data.shape[1] // self.sectors_size):
-                sectors.append(Sector(data[i * self.sensors_count: self.sensors_count + (i * self.sensors_count), 
-                                        j * self.sectors_size: self.sectors_size + (j * self.sectors_size)]))
+                sectors.append(data[i * self.sensors_count: self.sensors_count + (i * self.sensors_count), 
+                                        j * self.sectors_size: self.sectors_size + (j * self.sectors_size)])
             
             slices_data.append(np.array(sectors))
 
