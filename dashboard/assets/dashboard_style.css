@@ -1,0 +1,40 @@
+#main_information {
+    display: flex;
+    column-gap: 5%;
+    justify-content: space-between;
+    background-color: #8c8c8c;
+}
+
+#world_map_container {
+    width: 33%;
+    border: solid;
+    display: inline-block;
+}
+
+#sat_image_container {
+    width: 33%; 
+    border: solid;
+    display: inline-block;
+}
+
+#sat_sec_image_container {
+    width: 33%; 
+    border: solid;
+    display: inline-block;
+}
+
+#analytics {
+    display: flex;
+    column-gap: 2%;
+    justify-content: space-between;
+}
+
+#analytic-unit {
+    width: 33%;
+    border: solid;
+    display: inline-block;
+}
+
+body {
+    background-color: #8c8c8c;
+}

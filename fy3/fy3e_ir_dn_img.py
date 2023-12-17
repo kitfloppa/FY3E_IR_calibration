@@ -5,9 +5,6 @@ import numpy as np
 
 from fy3.dn_data import DnData
 
-'''
-TODO: 
-'''
 
 class WrongSatellite(Exception):
     pass
@@ -46,26 +43,32 @@ class FY3EIrDnImg:
 
         self.__kmirror_side = np.array(img_raw_data['Calibration']['Kmirror_Side'])
 
+
     @property
     def satellite_name(self) -> str:
         return self.__satellite_name
-    
+
+
     @property
     def dn_data_b6(self) -> DnData:
         return self.__dn_data_b6
-    
+
+
     @property
     def dn_data_b7(self) -> DnData:
         return self.__dn_data_b7
-    
+
+
     @property
     def latitude(self) -> DnData:
         return self.__latitude
-    
+
+
     @property
     def longitude(self) -> DnData:
         return self.__longitude
-    
+
+
     @property
     def kmirror_side(self) -> np.array:
         return self.__kmirror_side
