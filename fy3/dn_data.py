@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing_extensions import Literal
+from typing import Tuple
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,34 +7,28 @@ import matplotlib.pyplot as plt
 from fy3.dn_data_sec import DnDataSectors
 
 
-SECTOR_SIZE = 292
-SENSOR_COUNT = 40
-
-
 class DnData:
     '''
     TODO: Написать описание.
     '''
 
-    def __init__(self, data: np.array) -> None:
+    def __init__(self, data: np.array, k_mirror_side: np.array, sector_size: int = 292, sensor_count: int = 40) -> None:
         '''
         TODO: 
         '''
         
-        self.__data = data
+        self.__data = DnDataSectors(data, k_mirror_side, sector_size, sensor_count)
 
 
-    def get_sections(self, 
-                 sectors_size: int = SECTOR_SIZE,
-                 sensors_count: int = SENSOR_COUNT) -> DnDataSectors:
+    def get_sections(self) -> DnDataSectors:
         '''
         TODO: 
         '''
         
-        return DnDataSectors(self.data, sectors_size, sensors_count)
+        return self.__data
 
 
-    def imshow(self, figsize: (int, int) = (10, 10), title: str = '') -> None:
+    def imshow(self, figsize: Tuple[int, int] = (10, 10), title: str = '') -> None:
         '''
         TODO: 
         '''
@@ -50,10 +44,10 @@ class DnData:
 
 
     @property
-    def shape(self) -> (int, int):
+    def shape(self) -> Tuple[int, int]:
         return self.__data.shape
 
 
     @property
-    def data(self) -> np.array:
+    def data(self) -> DnDataSectors:
         return self.__data

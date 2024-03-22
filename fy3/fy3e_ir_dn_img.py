@@ -37,11 +37,11 @@ class FY3EIrDnImg:
 
         if self.__satellite_name != 'FY-3E':
             raise WrongSatellite('Satellite is not FY-3E.')
-
-        self.__dn_data_b6 = DnData(np.array(img_raw_data['Data']['EV_250_Emissive_b6']))
-        self.__dn_data_b7 = DnData(np.array(img_raw_data['Data']['EV_250_Emissive_b7']))
-
+        
         self.__kmirror_side = np.array(img_raw_data['Calibration']['Kmirror_Side'])
+
+        self.__dn_data_b6 = DnData(np.array(img_raw_data['Data']['EV_250_Emissive_b6']), self.__kmirror_side)
+        self.__dn_data_b7 = DnData(np.array(img_raw_data['Data']['EV_250_Emissive_b7']), self.__kmirror_side)
 
 
     @property

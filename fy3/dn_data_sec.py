@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Tuple
 
 import numpy as np
 
@@ -8,16 +9,17 @@ class Sector:
     TODO: Написать описание.
     '''
 
-    def __init__(self, data: np.array, x_index: int, y_index: int) -> None:
+    def __init__(self, data: np.array, x_index: int, y_index: int, mirror_side: int) -> None:
         '''
         TODO: Написать описание.
         '''
         
-        self.__sector = data[x_index, y_index]
+        self.__sector = data
         self.__x_index = x_index
         self.__y_index = y_index
+        self.__mirror_side = mirror_side
 
-    def __getitem__(self, item: int | (int, int) | slice | (slice, slice)):
+    def __getitem__(self, item: int | Tuple[int, int] | slice | Tuple[slice, slice]):
         if isinstance(item, int) or isinstance(item, slice):
             return self.__sector[item]
         else:
@@ -27,12 +29,27 @@ class Sector:
         return f'{self.__sector.__str__()}'
 
     @property
-    def shape(self) -> (int, int):
+    def shape(self) -> Tuple[int, int]:
         return self.__sector.shape
     
     @property
-    def sectors_index(self) -> (int, int):
+    def sectors_index(self) -> Tuple[int, int]:
         return (self.__x_index, self.__y_index)
+    
+    @property
+    def mirror_side(self) -> int:
+        return self.__mirror_side
+    
+    @property
+    def sector_data(self) -> np.array:
+        return self.__sector
+
+
+class SectorEx:
+    @staticmethod
+    def mean(sector: Sector) -> float:
+        return np.mean(sector.sector_data)
+
 
 class DnDataSectors:
 
@@ -40,7 +57,7 @@ class DnDataSectors:
     TODO: Написать описание.
     '''
     
-    def __init__(self, data: np.array, sectors_size: int, sensors_count: int) -> None:
+    def __init__(self, data: np.array, k_mirror_side: np.array, sectors_size: int, sensors_count: int) -> None:
         '''
         TODO: 
         '''
@@ -50,6 +67,7 @@ class DnDataSectors:
         
         self.__sectors_size = sectors_size
         self.__sensors_count = sensors_count
+        self.__k_mirror_side = k_mirror_side
 
         slices_data = []
 
@@ -64,13 +82,13 @@ class DnDataSectors:
 
         self.__sectors = np.array(slices_data)
 
-    def __getitem__(self, item: int | (int, int) | slice | (slice, slice)):
+    def __getitem__(self, item: int | Tuple[int, int] | slice | Tuple[slice, slice]):
         if isinstance(item, int) or isinstance(item, slice):
             return self.__sectors[item]
         else:
             return self.__sectors[item]
 
-    def __getitem__(self, item: int | (int, int) | slice | (slice, slice)):
+    def __getitem__(self, item: int | Tuple[int, int] | slice | Tuple[slice, slice]):
         if isinstance(item, int) or isinstance(item, slice):
             return self.__sectors[item]
         else:
@@ -84,13 +102,13 @@ class DnDataSectors:
         x_index = y // self.__sensors_count
         y_index = x // self.__sectors_size
 
-        return Sector(self.__sectors, x_index, y_index)
+        return Sector(self.__sectors[x_index, y_index], x_index, y_index, self.__k_mirror_side[x_index])
 
     def __str__(self) -> str:
         return f'{self.__sectors.__str__()}'
     
     @property
-    def shape(self) -> (int, int, int, int):
+    def shape(self) -> Tuple[int, int, int, int]:
         return self.__sectors.shape
 
     @property
