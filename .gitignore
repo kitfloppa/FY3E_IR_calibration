@@ -130,6 +130,7 @@ dmypy.json
 
 # Data
 data/
+buoy/
 
 # Word
 *.docx
