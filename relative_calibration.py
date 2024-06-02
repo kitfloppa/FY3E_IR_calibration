@@ -39,11 +39,11 @@ def coeff_calulation(mean_all_1: np.ndarray, mean_all_2: np.ndarray, mean_by_sen
 
 
 def coeff_calulation_b6(sv_b6_data: np.ndarray, voc_b6_data: np.ndarray) -> List[np.ndarray, np.ndarray]:
-    sv_b6_data = sv_b6_data[2:]
+    sv_b6_data = sv_b6_data[40:]
     sv_b6_mean_all = mean_all_data(sv_b6_data)
     sv_b6_sensors_mean = mean_by_sensor_data(sv_b6_data)
 
-    voc_b6_data = voc_b6_data[2:]
+    voc_b6_data = voc_b6_data[40:]
     voc_b6_mean_all = mean_all_data(voc_b6_data)
     voc_b6_sensors_mean = mean_by_sensor_data(voc_b6_data)
 
